@@ -1,22 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+
+const names = ["Gustavo", "Cass", "Gianna", "Corwin"];
 
 function App() {
+  // const myName = "Cass";
+  const [myName, setMyName] = useState("Cass");
+  const [counter, setCounter] = useState(0);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>{myName} is cool.</p>
+        {names.map((name) => (
+          <button key={name} onClick={() => setMyName(name)}>
+            {name}
+          </button>
+        ))}
+        <p>You clicked the button {counter} times</p>
+        <button onClick={() => setCounter(counter - 1)}>-1</button>
+        <button onClick={() => setCounter(counter - counter)}>Reset</button>
+        <button onClick={() => setCounter(counter + 1)}>+1</button>
       </header>
     </div>
   );
